@@ -458,6 +458,17 @@
       position: relative !important;
     }
 
+    /* MathLive's default icon spacing can clip glyphs in our shorter keycaps. */
+    #keyboardContainer .MLK__row > :is(.action, .shift):has(> svg) {
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    #keyboardContainer .MLK__row > :is(.action, .shift) > svg {
+      margin: 0;
+    }
+
     /* Scale down math content in small keycaps to prevent overflow */
     #keyboardContainer .MLK__keycap.small {
       font-size: 12px;
@@ -695,6 +706,7 @@
       --keycap-secondary-text: #6e6e73;
       --keycap-border: #c7c7cc;
       --keyboard-toolbar-text: #1d1d1f;
+      --keyboard-toolbar-text-active: light-dark(#0056a6, #409cff);
       background: var(--keyboard-background) !important;
       border-radius: 8px;
     }
