@@ -1,8 +1,8 @@
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 
 exports.default = async function (context) {
   const appPath = context.appOutDir;
   // Remove resource forks and extended attributes that break codesign
-  execSync(`xattr -cr "${appPath}"`, { stdio: 'inherit' });
-  execSync(`dot_clean "${appPath}"`, { stdio: 'inherit' });
+  execFileSync('/usr/bin/xattr', ['-cr', appPath], { stdio: 'inherit' });
+  execFileSync('/usr/sbin/dot_clean', [appPath], { stdio: 'inherit' });
 };
